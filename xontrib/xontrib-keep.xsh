@@ -1,17 +1,14 @@
 from prompt_toolkit.keys import Keys
-from prompt_toolkit.filters import Condition, EmacsInsertMode, ViInsertMode, HasFocus
-from prompt_toolkit.enums import SEARCH_BUFFER
+from prompt_toolkit.filters import Condition
 from prompt_toolkit import prompt
 from keep import utils
 
 __all__ = ()
 
-@events.on_ptk_create
+
+@events.on_ptk_create  # noqa
 def custom_keybindings(bindings, **kw):
     handler = bindings.registry.add_binding
-    arrow = ' <-- Command to add to keep'
-
-    has_focus = HasFocus(SEARCH_BUFFER)
 
     @Condition
     def xonsh_has_history(cli):
